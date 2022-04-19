@@ -1,0 +1,319 @@
+Relational Database Uses the notion of databases seperated into tables 
+
+
+Limitaions of RDMS
+1.Scalability
+2.Data Complexity
+3.Broken Keys
+4.Define Schema before load
+
+What Is NoSql?
+Non-relational database.
+No-Sql term coind iin 1998 by Carlo Strozzi
+Data Is More Complex.
+
+unstractured Data:
+1.Music files
+2.Image
+3.xml
+4.emails
+5.Facebook
+
+No Sql database
+Document Based
+1.MongoDB
+2. Couchbase
+Key/Value Based
+1.Redis
+2. MemCacheD
+Column based
+1.Cassandra
+2.HBase
+Graph Based
+1.Neo4J
+OrienDB
+
+why NoSQL is gainig populartiy
+1.Distributed database
+2.NoSchema Required
+3.Auto Elasticity
+4.Intergrated Caching
+5.Simple DataModel
+
+4 main characteristics
+Volume, Variety Velocity Value Veracity
+1) Data Increases continuosly.
+2)Data is both structured /Unstrucured
+3)Difficult to analyse within a certain tolerable time limit
+
+1PB in one week 
+Blu-ray disc movie
+2GB of space for 2 hours of movie
+
+1PB of movie continously, > 30 years 
+
+FB deals with 400PB of data every month.
+
+Radical Difference
+1.It allows you to store related items in one 'row' int he same table. Row in this context is not the same as for the RDBMS.
+2.Lack of scability in RDBMS for OLTP applications/or any with lot or writes
+
+Data intergrity at all levels.
+
+Speed, Auto Elasticity
+
+Document Based Database.
+Allow very Deep nesting and complex structures to be achieved
+Doc within doc within doc
+
+Key - Value
+Word - Meaning(s)
+Redis
+e,g Employee ID:41
+Quickly Storing Basic info which are done after performing CPU computation
+Mongo means Humongous : Huge data
+
+Column Based
+Graph Based
+
+
+EQUIVALENT CONCEPTS
+RDBMS 		  MongoDB
+Database	  Database
+Tables		  Collections
+Records/Rows	  Document/Objects - A document is a basic unit of data for Mongo equals to a row.
+Column/Attribute  Field
+Join 		  Embeded/Link Documents
+
+A single instance of Mongo Can hold multiple database 
+Every documnet nhas a separate key '_id' -> unidue to collection.
+
+Javascript Shell
+1:Mongo Chef.
+
+Document: Key & associated values.
+{"MFD" : "Mongo is powerfull"}
+ Key : MFD
+ Value: Mongo is powerful.
+
+In MongoDB
+Database is made of collections 
+Made up of Multiple collections.
+Created on the fly when referenced for the first time.
+
+Collection id a table
+>Schema-les and contains Documents
+>Indexed by one or more Keys
+>created ont he fly when referenced for the first time 
+>Capped collections: fixed-size, older records get dropped after reaching the limit.
+
+Documet is a record/row
+>Stored in a collection 
+>can have _id key - works like Primary Keys in MySql
+>Supported Relationships - Embedded (or) References
+>Documnet Storage in BSON (Binary Form of Json).
+
+Installing MongoDB
+1.Visit the MongoDB wensite and downloan the MSI installer for MongoDB.
+2.Install. 
+	*Take not of the installation path.
+3.Navigate to the installation folder after the installation is complete and create the following folder.
+     i.\mongodb\data
+    ii.\mongodb\data\db
+    iii.\mongodb\data\log
+4.Create a text file which is inthe line of 
+mongo.config.txt
+
+bind ip = 127.0.0.1
+port = 27017
+quiet = true
+dbpath=c:\mongodb\data\log\mongodb.log
+logpath=c:\mongodb\data\log\mongodb.log
+logappend=true // this is true so that the log file are not overritten upon restart of mongod instance.
+
+ save the file and remove .text at the end.
+mongo.config
+
+5.open terminal
+win+x, press Letter A
+
+>c:\mongdb>mongod.exe  --config="C:\mongodb\mongo.config"
+
+open a new terminal
+go to the bin folder
+>type mongo
+>db 
+
+...........................................
+MongoDB Installation on linux
+download from the site for linux
+save the file to home/downloads
+unzip in the same folder 
+$tar xyz mongodb-linux-i686-3..tgz
+$sudo mkdir /mongo/data
+localhost download# sudo mongodb-linux-i686./bin/mongod --dbpath /mongo/data ...
+waiting for connection on port 27017
+
+open another shell 
+#mongo-linux ......3./bin/mongo
+conecting to test 
+>
+>show dbs
+ inside any browser type
+localhost:27017
+
+MongoDB Stores JSON documents
+JSON - JavaScript Object Notation 
+
+Key, Value 
+(name. Mark)
+ DataStructures in  MongoDb
+Arrays, Dictionaries
+documents do not any schema.
+
+Features Mongo Omit to have Scalability
+	indexes
+	joins
+	transactions across documents 
+	storage 
+
+MongoDB is case censitive and also type insenstive.
+You cannot have duplicate keys.
+collections -> Group of documents
+Have dynamic schema.
+
+mongochef and download from 3t.io/mongochef/
+
+
+CRUD Operations Comparison
+Relational 		Mongo 				SQL 
+CREATE			insert				insert
+READ			select				Find
+UPDATE			Update				Update
+DELETE			Delete				remove
+
+
+
+
+INSTALLING MONGODB
+1.Data Dir C:\Program Files\MongoDB\Server\5.0\data\
+2.LogDir C:\Program Files\MongoDB\Server\5.0\log\
+
+https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/
+C:\Users\LMark\AppData\Local\Programs\mongosh\
+
+MongoDB Datatypes
+There are mainly 16 datatypes in mongodb
+Double 
+String
+Object
+Array
+BinaryData
+Undefined Data
+Object Id 
+Boolean 
+Date
+Null 
+Reqular Expression 
+Javascript 
+Symbol
+Javascript with scope
+Interger
+TimeStamp
+Min andMax Key
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2:17:02
+
+Replication in Mongodb
+Minimal Replica Set in Mongodb 
+MongoDB suports an arrangement Called Replica Set.
+Members of a replica set are 
+i.PrimanryDB - Its one and only writable instance
+ii.SecondaryDB - Are readonly dbs.and can be in plural.Data is replicated from the Primary Database.Hence Eventual Consistency
+-When the primary database fails one of the secondary db takes over automatically hence gives the application resilience.
+-No data loss no loss of functionality
+iii.Arbiter - 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
