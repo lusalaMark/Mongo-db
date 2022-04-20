@@ -193,6 +193,23 @@ UPDATE			Update				Update
 DELETE			Delete				remove
 
 
+MongoDB reprsents data using BSON - (Binary Script Objet Notation) - Nested Objects
+
+obj = {"a":1 ,"b":"Hell","C":["apples","pears"]
+
+Collections are ptoperties of a database.
+
+Why Groupig of collections that are simmilar is important in MoongoDB even thought Mongo does not enforce this type of a rule:
+i.Data locality : Fewer disk seeks and More speed.
+ii.Index : Multiple collections. Index per  collection.
+
+"" - > Not a valid collection
+should not contain \ or 0 or null
+Dont start a collection with system as a prefix(reserved for only internal collections only)
+i.e 
+system.usercollection 
+
+
 
 
 INSTALLING MONGODB
@@ -204,17 +221,18 @@ C:\Users\LMark\AppData\Local\Programs\mongosh\
 
 MongoDB Datatypes
 There are mainly 16 datatypes in mongodb
-Double 
-String
-Object
-Array
-BinaryData
+Double -> Deals with floating values e.g 123.04, 1/4
+
+String -> UFT-8
+Object -> An embedded document - A documnet inside a document
+Array -> Usually denoted as [] 
+BinaryData -> 
 Undefined Data
-Object Id 
+Object Id -> 
 Boolean 
 Date
 Null 
-Reqular Expression 
+Reqular Expression -> Stores Reqular Expression in MongoDB. Maps directly to JavaScript RegExp.
 Javascript 
 Symbol
 Javascript with scope
@@ -222,7 +240,20 @@ Interger
 TimeStamp
 Min andMax Key
 
+Understanding the data type
+Docs in MongoDB are "JSON-like" and similer to objects in Javascript
+JSON'S data types are 6 but Mongo Adds more:
+From JSON -> null, Boolean numeric, string , array , object
+From Mongo -> Date Regex Embedded document objectid BinaryData Code
 
+db.people.drop() //to remove the collections completely
+db.people.remove({}) //to remove documnets from a collection 
+db.people.update({"Name" :"Mark"},{$set : {"title":"MongoDB for developers"}})
+db.Hike.insert( ({_id:ObjectId(), Greet : "How are you?"}))
+
+
+
+2:40:00
 
 
 
@@ -258,8 +289,32 @@ ii.SecondaryDB - Are readonly dbs.and can be in plural.Data is replicated from t
 iii.Arbiter - 
 
 
+Setting Replica Set In MongoDB
+require 3 servers
+1.primaryDB
+2.SecondaryDB
+3.ArbiterDB
+run all from one machine on different tcp port.
+Will Need 3 separate directory 
 
+@REM Primary
+start "a"  mongod --dbpath ./db1 --port 3000 --replset "demo"
+@REM Secondary 
+start "b"  mongod --dbpath ./db2 --port 4000 --replset "demo"
+@REM Arbitar
+start "c"  mongod --dbpath ./db3 --port 50000 --replset "demo"
 
+1. Make the following directories.
+mkdir \Pluralsight\db1
+mkdir \Pluralsight\db2
+mkdir \Pluralsight\db3
+
+2. Start the 3 instances
+start "a"  mongod --dbpath ./db1 --port 3000 --replset "demo"
+start "b"  mongod --dbpath ./db2 --port 4000 --replset "demo"
+start "c"  mongod --dbpath ./db3 --port 50000 --replset "demo"
+
+3.
 
 
 
